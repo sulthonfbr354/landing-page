@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sistem Ekstra | SMA Negeri 1 Turen</title>
+  <!-- Load Tailwind CSS dari CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Load Font Poppins untuk tampilan modern dan profesional -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+  <!-- Load Font Awesome untuk Ikon -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    /* Menggunakan font Poppins secara global */
+    body {
+      font-family: 'Poppins', sans-serif;
+      scroll-behavior: smooth;
+    }
+
+    /* Konfigurasi warna aksen utama (Biru Indigo Profesional) */
+    .text-primary {
+      color: #4F46E5;
+    }
+
+    /* Indigo 600 */
+    .bg-primary {
+      background-color: #4F46E5;
+    }
+
+    /* Indigo 600 */
+    .border-primary {
+      border-color: #4F46E5;
+    }
+
+    /* Indigo 600 */
+    /* Efek hover untuk tombol utama */
+    .btn-primary:hover {
+      background-color: #4338CA;
+    }
+
+    /* Indigo 700 */
+    /* Shadow yang lebih profesional dan lembut */
+    .shadow-pro {
+      box-shadow: 0 10px 30px -5px rgba(79, 70, 229, 0.2), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    }
+
+    /* Gaya Slider */
+    .slider-item {
+      display: none;
+      /* Sembunyikan semua item secara default */
+      transition: opacity 0.5s ease-in-out;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    .slider-item.active {
+      display: block;
+      /* Tampilkan item yang aktif */
+    }
+  </style>
+</head>
+
+<body class="antialiased text-gray-800 bg-white">
+
+  <!-- Navbar -->
+  <header class="sticky top-0 z-50 bg-white shadow-lg border-b border-gray-100">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-20">
+        <!-- Logo/Nama Sekolah -->
+        <div class="flex items-center space-x-3">
+          <img src="gambar/smaki.png" alt="Logo SMA Negeri 1 Turen" class="h-12 w-12 object-contain" id="school-logo">
+          <div class="text-2xl font-bold text-gray-800">
+            SMA Negeri 1 Turen
+          </div>
+        </div>
+
+
+        <!-- Navigasi & Tombol Masuk -->
+        <div class="flex items-center space-x-4">
+          <!-- Tautan Navigasi (Desktop) -->
+          <div class="hidden md:flex space-x-8 items-center">
+            <a href="#fitur"
+              class="text-base font-medium text-gray-600 hover:text-primary transition duration-150">Fitur</a>
+            <a href="#manfaat"
+              class="text-base font-medium text-gray-600 hover:text-primary transition duration-150">Manfaat</a>
+            <a href="#alur" class="text-base font-medium text-gray-600 hover:text-primary transition duration-150">Alur
+              Proses</a>
+          </div>
+          <!-- Tombol Masuk (diperbarui) -->
+          <button id="loginBtn" onclick="showCustomMessage('Fitur login sedang disiapkan.','info')"
+            class="py-2.5 px-6 rounded-full text-white bg-primary btn-primary text-base font-semibold shadow-lg transition duration-300 transform hover:scale-105 hover:shadow-xl">
+            <i class="fas fa-sign-in-alt mr-2"></i> Masuk
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- 1. Bagian Hero -->
+    <section class="relative pt-20 pb-24 md:pt-32 md:pb-40 bg-gray-50 overflow-hidden">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div class="text-center max-w-5xl mx-auto">
+          <!-- Judul (Ukuran font sudah disesuaikan) -->
+          <h1 id="heroTitle"
+            class="text-4xl md:text-5xl lg:text-6xl font-black tracking-tight text-gray-900 leading-tight mb-6 transition duration-500 ease-in-out opacity-100">
+            [Judul sedang dimuat...]
+          </h1>
+          <!-- Subjudul Singkat (Ukuran font: text-xl md:text-2xl) -->
+          <p class="mt-4 text-xl md:text-2xl text-gray-600 max-w-4xl mx-auto font-light">
+            Platform Terintegrasi untuk Manajemen Ekstrakurikuler yang Cepat, Transparan, dan Efisien di SMA Negeri 1
+            Turen.
+          </p>
+
+          <!-- Area Slider Gambar Ekstra (Baru) -->
+          <div id="slider-container" class="mt-20 flex justify-center">
+            <div
+              class="w-full max-w-6xl rounded-3xl shadow-2xl overflow-hidden border-8 border-white bg-gray-200 p-2 relative h-[450px]">
+
+              <!-- Tombol Navigasi Slider -->
+              <button onclick="changeSlide(-1)"
+                class="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white/70 hover:bg-white p-3 rounded-full shadow-lg z-20 transition">
+                <i class="fas fa-chevron-left text-primary"></i>
+              </button>
+              <button onclick="changeSlide(1)"
+                class="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white/70 hover:bg-white p-3 rounded-full shadow-lg z-20 transition">
+                <i class="fas fa-chevron-right text-primary"></i>
+              </button>
+
+              <!-- Slider Items -->
+              <div class="relative w-full h-full">
+
+                <!-- Slider 1: Placeholder Paskibra -->
+                <div class="slider-item active" data-index="0">
+                  <img src="gambar/paskib.jpeg" class="w-full h-full object-cover rounded-2xl"
+                    onerror="this.onerror=null;this.src='https://placehold.co/1200x450/4F46E5/ffffff?text=EKSTRA+PASKIBRA';"
+                    alt="Ekstrakurikuler Paskibra">
+                  <div class="absolute bottom-4 left-4 right-4 bg-black/50 p-4 rounded-xl">
+                    <p class="text-white text-lg font-bold">Paskibra: Disiplin dan Patriotisme</p>
+                  </div>
+                </div>
+
+                <!-- Slider 2: Placeholder Seni Tari -->
+                <div class="slider-item" data-index="1">
+                  <img src="gambar/seni-tari.jpeg" class="w-full h-full object-cover rounded-2xl"
+                    onerror="this.onerror=null;this.src='https://placehold.co/1200x450/EC4899/ffffff?text=EKSTRA+SENI+TARI';"
+                    alt="Ekstrakurikuler Seni Tari">
+                  <div class="absolute bottom-4 left-4 right-4 bg-black/50 p-4 rounded-xl">
+                    <p class="text-white text-lg font-bold">Seni Tari: Ekspresi Budaya dan Kreativitas</p>
+                  </div>
+                </div>
+
+                <!-- Slider 3: Placeholder Pramuka -->
+                <div class="slider-item" data-index="2">
+                  <img src="gambar/da.jpeg" class="w-full h-full object-cover rounded-2xl"
+                    onerror="this.onerror=null;this.src='https://placehold.co/1200x450/10B981/ffffff?text=EKSTRA+PRAMUKA';"
+                    alt="Ekstrakurikuler Pramuka">
+                  <div class="absolute bottom-4 left-4 right-4 bg-black/50 p-4 rounded-xl">
+                    <p class="text-white text-lg font-bold">Pramuka: Kecakapan Hidup dan Kepemimpinan</p>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. & 3. Manfaat (Siswa & Guru) -->
+    <section id="manfaat" class="py-24 md:py-6 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <!-- Judul Bagian (Ukuran font: text-4xl md:text-5xl) -->
+        <h2 class="text-4xl md:text-5xl font-extrabold text-center text-gray-900 mb-20 tracking-tight">
+          Mengapa Harus Digital? Manfaat Utama
+        </h2>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
+
+          <!-- Manfaat untuk Siswa -->
+          <div class="bg-indigo-50 p-10 rounded-3xl shadow-pro hover:shadow-2xl transition duration-500">
+            <div class="text-primary text-5xl mb-6"><i class="fas fa-user-graduate"></i></div>
+            <h3 class="text-3xl font-bold mb-6 text-gray-900">Untuk Siswa: Akses Penuh, Pilihan Tepat</h3>
+            <ul class="space-y-6 text-lg text-gray-700 font-medium">
+              <li class="flex items-start">
+                <i class="fas fa-check-circle text-primary mt-1 mr-4 text-2xl"></i>
+                <span><strong class="font-semibold">Pendaftaran Real-time:</strong> Daftar ekstra hanya dalam beberapa
+                  klik, kapan saja, di mana saja.</span>
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-chart-pie text-primary mt-1 mr-4 text-2xl"></i>
+                <span><strong class="font-semibold">Transparansi Kuota:</strong> Lihat sisa kuota ekstra secara
+                  langsung, hindari kekecewaan.</span>
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-id-badge text-primary mt-1 mr-4 text-2xl"></i>
+                <span><strong class="font-semibold">Kartu Anggota Digital:</strong> Mendapatkan konfirmasi pendaftaran
+                  instan yang dapat disimpan.</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Manfaat untuk Guru/Admin -->
+          <div class="bg-gray-100 p-10 rounded-3xl shadow-pro hover:shadow-2xl transition duration-500">
+            <div class="text-primary text-5xl mb-6"><i class="fas fa-laptop-code"></i></div>
+            <h3 class="text-3xl font-bold mb-6 text-gray-900">Untuk Guru & Admin: Efisiensi Maksimal</h3>
+            <ul class="space-y-6 text-lg text-gray-700 font-medium">
+              <li class="flex items-start">
+                <i class="fas fa-file-excel text-primary mt-1 mr-4 text-2xl"></i>
+                <span><strong class="font-semibold">Rekap Otomatis:</strong> Data pendaftar dikompilasi secara otomatis,
+                  siap diekspor dalam hitungan detik.</span>
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-recycle text-primary mt-1 mr-4 text-2xl"></i>
+                <span><strong class="font-semibold">Go Green:</strong> Pengurangan penggunaan kertas hingga 100% untuk
+                  administrasi.</span>
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-shield-alt text-primary mt-1 mr-4 text-2xl"></i>
+                <span><strong class="font-semibold">Data Terpusat:</strong> Semua data historis dan aktif tersimpan aman
+                  di satu tempat, mudah diakses.</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. Fitur Utama Platform -->
+    <section id="fitur" class="py-24 md:py-36 bg-gray-50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-20">
+          <p class="text-primary font-semibold text-lg mb-3">KEMAMPUAN PLATFORM</p>
+          <h2 class="text-4xl md:text-5xl font-extrabold text-gray-900 tracking-tight">Fitur yang Mendukung Sekolah
+            Modern</h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+
+          <!-- Fitur 1: Multi-Role -->
+          <div
+            class="bg-white p-8 rounded-2xl shadow-lg border-t-4 border-primary hover:shadow-xl transition duration-300">
+            <div class="text-5xl text-primary mb-4"><i class="fas fa-users-cog"></i></div>
+            <h3 class="text-2xl font-bold mb-2">Akses Berdasarkan Peran</h3>
+            <p class="text-gray-600">Siswa, Guru Pembina, dan Admin memiliki tampilan *dashboard* dan fungsionalitas
+              yang disesuaikan.</p>
+          </div>
+
+          <!-- Fitur 2: Kuota Otomatis -->
+          <div
+            class="bg-white p-8 rounded-2xl shadow-lg border-t-4 border-primary hover:shadow-xl transition duration-300">
+            <div class="text-5xl text-primary mb-4"><i class="fas fa-cogs"></i></div>
+            <h3 class="text-2xl font-bold mb-2">Manajemen Kuota Cerdas</h3>
+            <p class="text-gray-600">Sistem otomatis membatasi pendaftaran ketika batas maksimum per ekstra telah
+              tercapai.</p>
+          </div>
+
+          <!-- Fitur 3: Notifikasi & Pesan -->
+          <div
+            class="bg-white p-8 rounded-2xl shadow-lg border-t-4 border-primary hover:shadow-xl transition duration-300">
+            <div class="text-5xl text-primary mb-4"><i class="fas fa-envelope-open-text"></i></div>
+            <h3 class="text-2xl font-bold mb-2">Pusat Pesan Terpadu</h3>
+            <p class="text-gray-600">Admin dapat mengirim pengumuman penting atau notifikasi perubahan jadwal ke semua
+              peserta.</p>
+          </div>
+
+          <!-- Fitur 4: Riwayat Digital -->
+          <div
+            class="bg-white p-8 rounded-2xl shadow-lg border-t-4 border-primary hover:shadow-xl transition duration-300">
+            <div class="text-5xl text-primary mb-4"><i class="fas fa-database"></i></div>
+            <h3 class="text-2xl font-bold mb-2">Penyimpanan Historis</h3>
+            <p class="text-gray-600">Semua data pendaftaran ekstra tahun sebelumnya tersimpan rapi untuk keperluan
+              evaluasi.</p>
+          </div>
+
+          <!-- Fitur 5: Ekspor Data Fleksibel -->
+          <div
+            class="bg-white p-8 rounded-2xl shadow-lg border-t-4 border-primary hover:shadow-xl transition duration-300">
+            <div class="text-5xl text-primary mb-4"><i class="fas fa-download"></i></div>
+            <h3 class="text-2xl font-bold mb-2">Ekspor Data Cepat</h3>
+            <p class="text-gray-600">Laporan pendaftar dapat diunduh dalam format umum (e.g., CSV) untuk diolah lebih
+              lanjut.</p>
+          </div>
+
+          <!-- Fitur 6: Tampilan Responsif -->
+          <div
+            class="bg-white p-8 rounded-2xl shadow-lg border-t-4 border-primary hover:shadow-xl transition duration-300">
+            <div class="text-5xl text-primary mb-4"><i class="fas fa-mobile-alt"></i></div>
+            <h3 class="text-2xl font-bold mb-2">Desain *Mobile-First*</h3>
+            <p class="text-gray-600">Antarmuka pengguna didesain agar optimal dan mudah digunakan di perangkat seluler.
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. Contoh Alur Penggunaan -->
+    <section id="alur" class="py-24 md:py-36 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-20">
+          <p class="text-primary font-semibold text-lg mb-3">PROSES MUDAH & CEPAT</p>
+          <h2 class="text-4xl md:text-5xl font-extrabold text-gray-900 tracking-tight">Langkah Mudah Menggunakan Sistem
+          </h2>
+        </div>
+
+        <div class="relative flex flex-col items-center">
+          <!-- Garis Alur Vertikal (Mobile) & Horizontal (Desktop) -->
+          <div class="absolute inset-y-0 left-1/2 transform -translate-x-1/2 w-1 bg-gray-200 hidden md:block"></div>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-12 w-full">
+
+            <!-- Langkah 1 -->
+            <div
+              class="relative flex flex-col items-center text-center p-8 bg-indigo-50 rounded-2xl shadow-lg border-l-4 border-primary md:border-l-0 md:border-t-4">
+              <div
+                class="w-16 h-16 flex items-center justify-center rounded-full bg-primary text-white text-3xl font-extrabold mb-4 z-10 shadow-md">
+                1</div>
+              <h3 class="text-2xl font-bold mb-2 text-gray-900">Admin Siapkan Data</h3>
+              <p class="text-gray-600">Guru/Admin mengelola daftar ekstra, kuota, dan jadwal di *dashboard* admin yang
+                intuitif.</p>
+            </div>
+
+            <!-- Langkah 2 -->
+            <div
+              class="relative flex flex-col items-center text-center p-8 bg-indigo-50 rounded-2xl shadow-lg border-l-4 border-primary md:border-l-0 md:border-t-4 mt-8 md:mt-0">
+              <div
+                class="w-16 h-16 flex items-center justify-center rounded-full bg-primary text-white text-3xl font-extrabold mb-4 z-10 shadow-md">
+                2</div>
+              <h3 class="text-2xl font-bold mb-2 text-gray-900">Siswa Login & Pilih</h3>
+              <p class="text-gray-600">Siswa masuk menggunakan NIS, melihat detail, dan memilih ekstra dengan mudah.</p>
+            </div>
+
+            <!-- Langkah 3 -->
+            <div
+              class="relative flex flex-col items-center text-center p-8 bg-indigo-50 rounded-2xl shadow-lg border-l-4 border-primary md:border-l-0 md:border-t-4 mt-8 md:mt-0">
+              <div
+                class="w-16 h-16 flex items-center justify-center rounded-full bg-primary text-white text-3xl font-extrabold mb-4 z-10 shadow-md">
+                3</div>
+              <h3 class="text-2xl font-bold mb-2 text-gray-900">Rekapitulasi Instan</h3>
+              <p class="text-gray-600">Data pendaftaran langsung tersedia dan siap dicetak sebagai laporan akhir.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. Ajakan untuk Mencoba Platform -->
+    <section class="py-24 md:py-32 bg-primary">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h2 class="text-4xl md:text-5xl font-extrabold text-white mb-6 tracking-tight">
+          Siap Mengubah Cara Sekolah Anda Bekerja?
+        </h2>
+        <p class="text-xl text-indigo-100 mb-10 font-light">
+          Mulai efisiensi administrasi ekstra Anda sekarang juga.
+        </p>
+        <!-- Tombol Hubungi Kami -->
+        <button onclick="showCustomMessage('Hubungi Admin untuk informasi lebih lanjut.','info')"
+          class="py-4 px-12 text-xl font-bold rounded-full text-primary bg-white shadow-lg transition duration-300 transform hover:scale-105 hover:bg-gray-100">
+          Hubungi Kami <i class="fas fa-info-circle ml-2"></i>
+        </button>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-white pt-16 pb-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8 border-b border-gray-700 pb-10">
+
+        <!-- Kolom 1: Info Platform -->
+        <div>
+          <h4 class="text-2xl font-extrabold mb-4 text-primary">SMA Negeri 1 Turen</h4>
+          <p class="text-gray-400 text-sm font-light">Sistem digitalisasi administrasi ekstra untuk efisiensi dan
+            transparansi.</p>
+        </div>
+
+        <!-- Kolom 2: Tautan Penting -->
+        <div>
+          <h4 class="text-lg font-semibold mb-4">Pintasan</h4>
+          <ul class="space-y-3 text-base">
+            <li><a href="#fitur" class="text-gray-400 hover:text-primary transition duration-150">Fitur Sistem</a></li>
+            <li><a href="#manfaat" class="text-gray-400 hover:text-primary transition duration-150">Keuntungan</a></li>
+            <li><a href="#alur" class="text-gray-400 hover:text-primary transition duration-150">Alur Proses</a></li>
+            <li><button onclick="showCustomMessage('Fitur masuk akan segera tersedia.','info')"
+                class="text-gray-400 hover:text-primary transition duration-150">Akses Sistem</button></li>
+          </ul>
+        </div>
+
+        <!-- Kolom 3: Info Kontak -->
+        <div>
+          <h4 class="text-lg font-semibold mb-4">Hubungi Kami</h4>
+          <ul class="space-y-3 text-base text-gray-400">
+            <li><i class="fas fa-map-marker-alt mr-3"></i> Turen, Kabupaten Malang, Jatim</li>
+            <li><i class="fas fa-phone mr-3"></i> (0341) 987-6543</li>
+            <li><i class="fas fa-envelope mr-3"></i> admin@sman1turen.sch.id</li>
+          </ul>
+        </div>
+
+        <!-- Kolom 4: Media Sosial (Simulasi) -->
+        <div>
+          <h4 class="text-lg font-semibold mb-4">Ikuti Kami</h4>
+          <div class="flex space-x-5 text-2xl">
+            <a href="#" class="text-gray-400 hover:text-primary transition duration-150"><i
+                class="fab fa-instagram"></i></a>
+            <a href="#" class="text-gray-400 hover:text-primary transition duration-150"><i
+                class="fab fa-facebook-f"></i></a>
+            <a href="#" class="text-gray-400 hover:text-primary transition duration-150"><i
+                class="fab fa-youtube"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Hak Cipta -->
+      <div class="mt-12 pt-6 border-t border-gray-800 text-center">
+        <p class="text-sm text-gray-500 font-light">&copy; 2025 SMA Negeri 1 Turen. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // --- FUNGSI DINAMIS JAVASCRIPT ---
+
+    let currentSlide = 0;
+    let slideInterval;
+
+    // 1. Fungsi untuk menampilkan slide tertentu
+    function showSlide(n) {
+      const slides = document.querySelectorAll('.slider-item');
+      if (slides.length === 0) return;
+
+      // Pastikan n berada dalam batas array
+      if (n >= slides.length) {currentSlide = 0;}
+      if (n < 0) {currentSlide = slides.length - 1;}
+
+      // Sembunyikan semua slide
+      slides.forEach((slide) => {
+        slide.classList.remove('active');
+      });
+
+      // Tampilkan slide saat ini
+      slides[currentSlide].classList.add('active');
+    }
+
+    // 2. Fungsi untuk mengubah slide
+    function changeSlide(direction) {
+      // Hentikan autoplay saat tombol manual ditekan
+      clearInterval(slideInterval);
+      currentSlide += direction;
+      showSlide(currentSlide);
+      // Mulai ulang autoplay
+      startAutoplay();
+    }
+
+    // 3. Fungsi Autoplay Slider
+    function startAutoplay() {
+      // Bersihkan interval lama jika ada
+      clearInterval(slideInterval);
+      slideInterval = setInterval(() => {
+        currentSlide++;
+        showSlide(currentSlide);
+      }, 5000); // Ganti gambar setiap 5 detik
+    }
+
+
+    // 4. Smooth Scrolling
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+        });
+      });
+    });
+
+    // 5. Fungsi Dinamis Judul Hero (Lebih halus)
+    function updateHeroTitle() {
+      const titles = [
+        "Efisien. Transparan. Digital.",
+        "Transformasi Ekstrakurikuler.",
+        "Akses Mudah untuk Siswa."
+      ];
+      let currentTitleIndex = 0;
+      const heroTitleEl = document.getElementById('heroTitle');
+
+      // Set judul awal setelah dimuat
+      heroTitleEl.innerHTML = `SISTEM EKSTRA <span class="text-primary block lg:inline">SMA N 1 TUREN.</span>`;
+
+      // Animasi Judul
+      setInterval(() => {
+        heroTitleEl.classList.remove('opacity-100');
+        heroTitleEl.classList.add('opacity-0');
+
+        setTimeout(() => {
+          let newTitle = titles[currentTitleIndex];
+          let parts = newTitle.split('.');
+          // Memastikan bagian yang di-highlight adalah bagian terakhir
+          heroTitleEl.innerHTML = `${parts[0]}. <span class="text-primary block lg:inline">${parts.slice(1).join('.').trim()}</span>`;
+
+          heroTitleEl.classList.remove('opacity-0');
+          heroTitleEl.classList.add('opacity-100');
+
+          currentTitleIndex = (currentTitleIndex + 1) % titles.length;
+        }, 300); // Tunggu waktu transisi opacity
+      }, 4000); // Ganti setiap 4 detik
+    }
+
+    // 6. Custom Message Box (Menggantikan alert())
+    function showCustomMessage(message, type = 'info') {
+      let existingToast = document.getElementById('customToast');
+      if (existingToast) existingToast.remove();
+
+      const color = type === 'success' ? 'bg-green-500' : (type === 'error' ? 'bg-red-500' : 'bg-primary');
+      const icon = type === 'success' ? 'fas fa-check-circle' : (type === 'error' ? 'fas fa-exclamation-triangle' : 'fas fa-info-circle');
+
+      const toast = document.createElement('div');
+      toast.id = 'customToast';
+      toast.className = `fixed bottom-5 right-5 p-4 rounded-xl shadow-2xl text-white ${color} transition duration-300 transform opacity-0 translate-y-full z-[101] flex items-center max-w-xs`;
+      toast.innerHTML = `
+                <i class="${icon} text-2xl mr-3"></i>
+                <span class="font-medium text-base">${message}</span>
+            `;
+
+      document.body.appendChild(toast);
+
+      // Show animation
+      setTimeout(() => {
+        toast.classList.remove('opacity-0', 'translate-y-full');
+        toast.classList.add('opacity-100', 'translate-y-0');
+      }, 50);
+
+      // Hide animation
+      setTimeout(() => {
+        toast.classList.remove('opacity-100', 'translate-y-0');
+        toast.classList.add('opacity-0', 'translate-y-full');
+      }, 3000); // Tampilkan selama 3 detik
+
+      // Remove from DOM after transition
+      setTimeout(() => {
+        toast.remove();
+      }, 3500);
+    }
+
+
+    // Event listener saat dokumen dimuat
+    document.addEventListener('DOMContentLoaded', () => {
+      updateHeroTitle();
+      showSlide(currentSlide);
+      startAutoplay();
+    });
+
+  </script>
+</body>
+
+</html>
